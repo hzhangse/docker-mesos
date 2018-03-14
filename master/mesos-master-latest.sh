@@ -6,4 +6,4 @@ sudo docker run -d \
 -e MESOS_IP=${HOST_IP} \
 -e MESOS_QUORUM=1 \
 -e MESOS_ZK=zk://${ZK_IP}/mesos \
---name mesos-master-latest --net shadownet --ip ${HOST_IP} rainbow954/mesos-master
+--name mesos-master-latest --net shadownet --ip ${HOST_IP} registry.cn-hangzhou.aliyuncs.com/rainbow954/mesos-master:latest
