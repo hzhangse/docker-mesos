@@ -1,4 +1,4 @@
-FROM rainbow954/mesos:latest
+FROM registry.cn-hangzhou.aliyuncs.com/rainbow954/mesos:latest
 
 #Oracle JDK
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list && \

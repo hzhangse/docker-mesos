@@ -1,22 +1,15 @@
-FROM ubuntu:16.04
-MAINTAINER Ryan Zhang <rainbow954@163.com>
+FROM registry.cn-hangzhou.aliyuncs.com/rainbow954/mesos:latest
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN apt-get update && \
-apt-get install --no-install-recommends -y ca-certificates curl && \
-rm -rf /var/lib/apt/lists/*
+#Docker
+RUN apt-get update && apt-get install -y curl apt-transport-https ca-certificates lxc iptables apparmor && \
+  apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+  echo deb https://apt.dockerproject.org/repo ubuntu-xenial main > /etc/apt/sources.list.d/docker.list && \
+  apt-get update && \
+  apt-get -y install docker-engine
 
-# https://github.com/Yelp/dumb-init
-RUN curl -fLsS -o /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.0.2/dumb-init_1.0.2_amd64 && chmod +x /usr/local/bin/dumb-init
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
-echo deb http://repos.mesosphere.io/ubuntu trusty main > /etc/apt/sources.list.d/mesosphere.list && \
-apt-get update && \
-apt-get install --no-install-recommends -y mesos && \
-rm -rf /var/lib/apt/lists/*
 
-# http://docs.docker.com/installation/ubuntulinux/
-RUN curl -fLsS https://get.docker.com/ | sh && test -x /usr/bin/docker
+
 
 CMD ["/usr/sbin/mesos-slave"]
 
@@ -32,7 +25,5 @@ ENV MESOS_SYSTEMD_ENABLE_SUPPORT false
 VOLUME /tmp/mesos
 
 COPY entrypoint.sh /
-
-RUN chmod a+x  /entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/dumb-init", "/entrypoint.sh"]
