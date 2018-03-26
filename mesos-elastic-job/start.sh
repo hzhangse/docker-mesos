@@ -2,6 +2,7 @@
 
 
 IP=$(grep "\s${HOSTNAME}$" /etc/hosts | head -n 1 | awk '{print $1}')
+
 cat /elastic-job/elastic-job-cloud-scheduler.properties.template | sed \
   -e "s|{{hostname}}|${hostname:-$IP}|g" \
   -e "s|{{mesos_url}}|${mesos_url}|g" \
@@ -16,4 +17,4 @@ cat /elastic-job/elastic-job-cloud-scheduler.properties.template | sed \
 
 echo "Starting elastic-job-cloud"
 service ssh start
-exec //elastic-job/elastic-job-cloud-scheduler/bin/start.sh
+exec /elastic-job/elastic-job-cloud-scheduler/bin/start.sh
