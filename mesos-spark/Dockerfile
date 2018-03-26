@@ -1,4 +1,4 @@
-FROM rainbow954/mesos-java:latest
+FROM registry.cn-hangzhou.aliyuncs.com/rainbow954/mesos-java:latest
 
 ARG SPARK_BINARY=spark-2.1.0-bin-hadoop2.7.tgz
 
@@ -13,7 +13,8 @@ ENV PATH=$PATH:$SPARK_HOME/bin
 COPY spark-defaults.conf ${SPARK_HOME}/conf
 COPY bootstrap.sh ${SPARK_HOME}
 COPY entrypoint.sh /
-
+chmod a+x /entrypoint.sh
+chmod a+x ${SPARK_HOME}/bootstrap.sh
 EXPOSE 4040
 
 ENTRYPOINT ["/entrypoint.sh"]
