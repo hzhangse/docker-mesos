@@ -13,8 +13,8 @@ ENV PATH=$PATH:$SPARK_HOME/bin
 COPY spark-defaults.conf ${SPARK_HOME}/conf
 COPY bootstrap.sh ${SPARK_HOME}
 COPY entrypoint.sh /
-chmod a+x /entrypoint.sh
-chmod a+x ${SPARK_HOME}/bootstrap.sh
+RUN chmod a+x /entrypoint.sh
+RUN chmod a+x ${SPARK_HOME}/bootstrap.sh
 EXPOSE 4040
 
 ENTRYPOINT ["/entrypoint.sh"]
