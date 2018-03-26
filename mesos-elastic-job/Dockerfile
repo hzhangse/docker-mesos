@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y git
 
 RUN git clone https://gitee.com/elasticjob/elastic-job.git 
 RUN cd /elastic-job/elastic-job-cloud && ls -al
-WORKDIR /elastic-job/elastic-job-cloud
+WORKDIR /elastic-job
 RUN mvn clean install -Dmaven.test.skip=true
 COPY elastic-job-cloud-scheduler.properties.template /elastic-job
 COPY start.sh /elastic-job
