@@ -1,4 +1,4 @@
-FROM registry-vpc.cn-hangzhou.aliyuncs.com/rainbow954/mesos/mesos:latest
+FROM registry.cn-hangzhou.aliyuncs.com/rainbow954/mesos:latest
 
 
 CMD ["mesos-master", "--registry=in_memory"]
