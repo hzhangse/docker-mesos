@@ -1,0 +1,45 @@
+# Routable IP address
+hostname={{hostname}}
+
+# Username for mesos framework
+user=
+
+# Mesos zookeeper address
+mesos_url={{mesos_url}}
+
+# Role for mesos framework
+
+#mesos_role=
+
+# Elastic-Job-Cloud's zookeeper address
+zk_servers={{zk_servers}}
+
+# Elastic-Job-Cloud's zookeeper namespace
+zk_namespace=elastic-job-cloud
+
+# Elastic-Job-Cloud's zookeeper digest
+zk_digest=
+
+# Job rest API port
+http_port=8899
+        
+# Max size of job accumulated
+job_state_queue_size=10000
+
+# Event trace rdb config
+
+event_trace_rdb_driver={{event_trace_rdb_driver}}
+
+event_trace_rdb_url={{event_trace_rdb_url}}
+
+event_trace_rdb_username={{event_trace_rdb_username}}
+
+event_trace_rdb_password={{event_trace_rdb_password}}
+
+# Task reconciliation interval
+
+reconcile_interval_minutes=-1
+
+# Enable/Disable mesos partition aware feature
+
+enable_partition_aware=false
