@@ -25,5 +25,5 @@ ENV MESOS_SYSTEMD_ENABLE_SUPPORT false
 VOLUME /tmp/mesos
 
 COPY entrypoint.sh /
-
+RUN chmod a+x  /entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/dumb-init", "/entrypoint.sh"]
