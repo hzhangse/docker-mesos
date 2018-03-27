@@ -26,6 +26,8 @@ WORKDIR /elastic-job/elastic-job-cloud/elastic-job-cloud-scheduler/target
 RUN mv $(ls *.tar.gz |grep elastic-job-cloud-scheduler) /elastic-job/elastic-job-cloud-scheduler.tar.gz
 #RUN tar -xzf $(ls *.tar.gz |grep elastic-job-cloud-scheduler) -C /elastic-job
 WORKDIR /elastic-job/
-RUN tar -xzf elastic-job-cloud-scheduler.tar.gz 
+RUN  mkdir -p /opt/elastic-job-cloud-scheduler
+RUN tar -xzf elastic-job-cloud-scheduler.tar.gz && cd $(ls  |grep elastic-job-cloud-scheduler) && mv * /opt/elastic-job-cloud-scheduler
+
 RUN chmod a+x /elastic-job/start.sh
 #CMD ["/elastic-job/start.sh"]

@@ -11,10 +11,10 @@ cat /elastic-job/elastic-job-cloud-scheduler.properties.template | sed \
   -e "s|{{event_trace_rdb_url}}|${event_trace_rdb_url}|g" \
   -e "s|{{event_trace_rdb_username}}|${event_trace_rdb_username:root}|g" \
   -e "s|{{event_trace_rdb_password}}|${event_trace_rdb_password:root}|g" \
-   > /elastic-job/elastic-job-cloud-scheduler/conf/elastic-job-cloud-scheduler.properties
+   > /opt/elastic-job-cloud-scheduler/conf/elastic-job-cloud-scheduler.properties
 
 
 
 echo "Starting elastic-job-cloud"
 service ssh start
-#exec /elastic-job/elastic-job-cloud-scheduler/bin/start.sh
+#exec /opt/elastic-job-cloud-scheduler/bin/start.sh
