@@ -5,7 +5,7 @@ DEPLOY_DIR=`pwd`
 CONF_DIR=${DEPLOY_DIR}/conf
 LIB_DIR=${DEPLOY_DIR}/lib/*
 CONTAINER_MAIN=io.elasticjob.cloud.scheduler.Bootstrap
-JAVA_OPTS=" -Xdebug -Xrunjdwp:transport=dt_socket,address=6666,server=y,suspend=n -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Djava.library.path=/usr/local/lib:/usr/lib -Xdebug -Xrunjdwp:transport=dt_socket,address=6666,server=y,suspend=n"
+JAVA_OPTS=" -Xdebug -Xrunjdwp:transport=dt_socket,address=6666,server=y,suspend=n -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Djava.library.path=/usr/local/lib:/usr/lib "
 
 source ${CONF_DIR}/elastic-job-cloud-scheduler.properties
 if [ ${hostname} = "" ] || [ ${hostname} = "127.0.0.1" ] || [ ${hostname} = "localhost" ]; then
