@@ -30,4 +30,5 @@ RUN  mkdir -p /opt/elastic-job-cloud-scheduler
 RUN tar -xzf elastic-job-cloud-scheduler.tar.gz && cd $(ls  |grep elastic-job-cloud-scheduler) && mv * /opt/elastic-job-cloud-scheduler
 COPY start.sh /opt/elastic-job-cloud-scheduler/bin
 RUN chmod a+x /opt/elastic-job-cloud-scheduler/bin/start.sh
+WORKDIR /opt/elastic-job-cloud-scheduler/bin
 CMD ["/opt/elastic-job-cloud-scheduler/bin/start.sh"]
