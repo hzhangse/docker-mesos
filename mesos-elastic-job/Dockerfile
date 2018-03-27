@@ -24,10 +24,12 @@ COPY elastic-job-cloud-scheduler.properties.template /elastic-job-cloud
 
 WORKDIR /elastic-job-cloud/elastic-job-cloud-scheduler/target
 RUN echo $(ls *.tar.gz |grep elastic-job-cloud-scheduler)
-RUN mv $(ls *.tar.gz |grep elastic-job-cloud-scheduler) /elastic-job-cloud/elastic-job-cloud-scheduler.tar.gz
-
-WORKDIR /elastic-job-cloud/
+RUN  mkdir -p /opt/work
 RUN  mkdir -p /opt/elastic-job-cloud-scheduler
+RUN mv $(ls *.tar.gz |grep elastic-job-cloud-scheduler) /opt/work/elastic-job-cloud-scheduler.tar.gz
+
+WORKDIR /opt/work
+
 RUN tar -xzf elastic-job-cloud-scheduler.tar.gz && cd $(ls  |grep elastic-job-cloud-scheduler) &&  echo $(ls) && mv * /opt/elastic-job-cloud-scheduler
 RUN echo $(ls  /opt/elastic-job-cloud-scheduler)
 COPY start.sh /opt/elastic-job-cloud-scheduler/bin
