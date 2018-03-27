@@ -12,7 +12,7 @@ sudo docker run -d \
 -e event_trace_rdb_url=${event_trace_rdb_url} \
 -e event_trace_rdb_username=root \
 -e event_trace_rdb_password=root \
---name mesos-elsticjob --net shadownet --ip ${HOST_IP}  rainbow954/mesos-elasticjob:latest
+--name mesos-elsticjob --net shadownet --ip ${HOST_IP}  registry.cn-hangzhou.aliyuncs.com/rainbow954/mesos-elasticjob:latest
 
 
 

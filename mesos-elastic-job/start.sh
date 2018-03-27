@@ -17,4 +17,4 @@ cat /elastic-job/elastic-job-cloud-scheduler.properties.template | sed \
 
 echo "Starting elastic-job-cloud"
 service ssh start
-exec /elastic-job/elastic-job-cloud-scheduler/bin/start.sh
+#exec /elastic-job/elastic-job-cloud-scheduler/bin/start.sh
