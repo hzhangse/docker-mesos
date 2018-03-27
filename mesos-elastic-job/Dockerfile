@@ -14,18 +14,18 @@ RUN apt-get update && apt-get install -y git
 
 
 
-RUN git clone https://gitee.com/elasticjob/elastic-job.git 
-RUN cd /elastic-job/elastic-job-cloud && ls -al
-WORKDIR /elastic-job
+RUN git clone https://github.com/elasticjob/elastic-job-cloud
+
+WORKDIR /elastic-job-cloud
 RUN mvn clean install -Dmaven.test.skip=true
-COPY elastic-job-cloud-scheduler.properties.template /elastic-job
+COPY elastic-job-cloud-scheduler.properties.template /elastic-job-cloud
 
-#COPY elastic-job-cloud-scheduler.tar.gz /elastic-job
 
-WORKDIR /elastic-job/elastic-job-cloud/elastic-job-cloud-scheduler/target
-RUN mv $(ls *.tar.gz |grep elastic-job-cloud-scheduler) /elastic-job/elastic-job-cloud-scheduler.tar.gz
-#RUN tar -xzf $(ls *.tar.gz |grep elastic-job-cloud-scheduler) -C /elastic-job
-WORKDIR /elastic-job/
+
+WORKDIR /elastic-job-cloud/elastic-job-cloud-scheduler/target
+RUN mv $(ls *.tar.gz |grep elastic-job-cloud-scheduler) /elastic-job-cloud/elastic-job-cloud-scheduler.tar.gz
+
+WORKDIR /elastic-job-cloud/
 RUN  mkdir -p /opt/elastic-job-cloud-scheduler
 RUN tar -xzf elastic-job-cloud-scheduler.tar.gz && cd $(ls  |grep elastic-job-cloud-scheduler) && mv * /opt/elastic-job-cloud-scheduler
 COPY start.sh /opt/elastic-job-cloud-scheduler/bin
