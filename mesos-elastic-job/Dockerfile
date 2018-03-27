@@ -23,6 +23,7 @@ COPY elastic-job-cloud-scheduler.properties.template /elastic-job-cloud
 
 
 WORKDIR /elastic-job-cloud/elastic-job-cloud-scheduler/target
+RUN echo $(ls *.tar.gz |grep elastic-job-cloud-scheduler)
 RUN mv $(ls *.tar.gz |grep elastic-job-cloud-scheduler) /elastic-job-cloud/elastic-job-cloud-scheduler.tar.gz
 
 WORKDIR /elastic-job-cloud/
