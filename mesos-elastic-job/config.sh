@@ -3,7 +3,7 @@
 
 IP=$(grep "\s${HOSTNAME}$" /etc/hosts | head -n 1 | awk '{print $1}')
 
-cat /elastic-job/elastic-job-cloud-scheduler.properties.template | sed \
+cat /opt/elastic-job-cloud-scheduler/bin/elastic-job-cloud-scheduler.properties.template | sed \
   -e "s|{{hostname}}|${hostname:-$IP}|g" \
   -e "s|{{mesos_url}}|${mesos_url}|g" \
   -e "s|{{zk_servers}}|${zk_servers}|g" \

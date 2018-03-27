@@ -18,7 +18,7 @@ RUN git clone https://github.com/elasticjob/elastic-job-cloud
 
 WORKDIR /elastic-job-cloud
 RUN mvn clean install -Dmaven.test.skip=true
-COPY elastic-job-cloud-scheduler.properties.template /elastic-job-cloud
+
 
 
 
@@ -34,9 +34,10 @@ RUN tar -xzf elastic-job-cloud-scheduler.tar.gz && cd $(ls  |grep elastic-job-cl
 RUN echo $(ls  /opt/elastic-job-cloud-scheduler)
 COPY start.sh /opt/elastic-job-cloud-scheduler/bin
 COPY config.sh /opt/elastic-job-cloud-scheduler/bin
+COPY elastic-job-cloud-scheduler.properties.template /opt/elastic-job-cloud-scheduler/bin
 
-RUN echo $(ls  /opt/elastic-job-cloud-scheduler/bin)
-#RUN ls -al /opt/elastic-job-cloud-scheduler/bin && chmod a+x /opt/elastic-job-cloud-scheduler/bin/start.sh
-#RUN chmod a+x /opt/elastic-job-cloud-scheduler/bin/config.sh
-#WORKDIR /opt/elastic-job-cloud-scheduler/bin
-#CMD ["/opt/elastic-job-cloud-scheduler/bin/config.sh"]
+
+RUN chmod a+x /opt/elastic-job-cloud-scheduler/bin/start.sh
+RUN chmod a+x /opt/elastic-job-cloud-scheduler/bin/config.sh
+WORKDIR /opt/elastic-job-cloud-scheduler/bin
+CMD ["/opt/elastic-job-cloud-scheduler/bin/config.sh"]
