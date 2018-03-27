@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 
 IP=$(grep "\s${HOSTNAME}$" /etc/hosts | head -n 1 | awk '{print $1}')
@@ -33,4 +33,4 @@ if [ ${hostname} = "" ] || [ ${hostname} = "127.0.0.1" ] || [ ${hostname} = "loc
 fi
 export LIBPROCESS_IP=${hostname}
 
-#java ${JAVA_OPTS} -classpath ${CONF_DIR}/*:${LIB_DIR}:. ${CONTAINER_MAIN}
+java ${JAVA_OPTS} -classpath ${CONF_DIR}/*:${LIB_DIR}:. ${CONTAINER_MAIN}
