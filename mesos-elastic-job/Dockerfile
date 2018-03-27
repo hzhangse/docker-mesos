@@ -40,5 +40,5 @@ COPY elastic-job-cloud-scheduler.properties.template /opt/elastic-job-cloud-sche
 RUN chmod a+x /opt/elastic-job-cloud-scheduler/bin/start.sh
 RUN chmod a+x /opt/elastic-job-cloud-scheduler/bin/config.sh
 WORKDIR /opt/elastic-job-cloud-scheduler/bin
-EXPOSE 6666
+EXPOSE 8000
 CMD ["/opt/elastic-job-cloud-scheduler/bin/config.sh"]
